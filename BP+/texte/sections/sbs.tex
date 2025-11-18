@@ -1,0 +1,18 @@
+\documentclass[../main.tex]{subfiles}
+
+
+\begin{document}
+
+\thispagestyle{plain}
+\begin{centering}
+	\begin{quantikz}[transparent]
+		\ket{\psi}&\qw \gategroup[2,steps=9,style={dashed,
+	rounded corners, inner xsep=2pt}]{{\(K_m\)}}&\qw&\gate{CD(s)}& \qw & \gate{CD(b)} & \qw & \gate{CD(s)} & \qw & \qw& \qw & \qw\\
+											  &\ket{+}& \qw &\ctrl{-1} & \gate{R_X(\frac{\pi }{2})} & \ctrl{-1} &  \gate{R_X(\frac{\pi }{2})}& \ctrl{-1} & \gate{R_Y(\frac{\pi }{2})} & \qw \bra{m} \end{quantikz}\\
+\end{centering}
+\[ m \in \{ 0,1 \}  \]
+\[ K_0 \ket{\psi} = \ket{\psi} \quad K_1 \ket{\psi} = \ket{\psi_{\text{{\rm{}corr}}} } \]
+\[ K_1^{\dagger} \ket{{\rm{}GKP}} = \ket{\text{erreur} } \]
+
+\end{document}
+

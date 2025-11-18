@@ -1,0 +1,20 @@
+\documentclass[../main.tex]{subfiles}
+
+
+\begin{document}
+
+\thispagestyle{plain}
+\begin{centering}
+\begin{quantikz}[transparent]
+ &
+ \qw\gategroup[3,steps=8,style={dashed,rounded
+corners, inner
+xsep=2pt},label style={label
+position=below,anchor=north,yshift=-0.2cm}]{{\sc
+swap}} & \targ{} & \qw & \gate{4 \rm \times sBs} & \qw & \ctrl{2} & \qw & \gate{4 \rm \times sBs} & \qw\\
+	   & \qw & \qw & \targ{} & \qw &\qw & \qw & \ctrl{1} & \qw & \qw\\
+	   & \ket{+} & \ctrl{-2} & \ctrl{-1} & \meter{X} & \ket{0} & \targ{} & \targ{} &\meter{Z}
+\end{quantikz}
+\end{centering}
+\end{document}
+
