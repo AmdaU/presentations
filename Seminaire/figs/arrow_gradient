@@ -23,10 +23,8 @@ void gradientArrowLine(
   real w = 1bp,
   bool arrowAtStart = false,
   bool arrowAtEnd   = true,
-  real arrowLenStart   = 0.5,
-  real arrowLenEnd     = 0.5,
-  real arrowWidthStart = 0.25,
-  real arrowWidthEnd   = 0.25
+  real arrowLen   = 0.5,
+  real arrowWidth = 0.25
 ) {
   pair d = B - A;
   real L = abs(d);
@@ -34,8 +32,8 @@ void gradientArrowLine(
   pair u = d/L;
 
   // Fractions of [0,1] reserved for arrows
-  real t0 = arrowAtStart ? arrowLenStart/L : 0;
-  real t1 = arrowAtEnd   ? 1 - arrowLenEnd/L : 1;
+  real t0 = arrowAtStart ? arrowLen/L : 0;
+  real t1 = arrowAtEnd   ? 1 - arrowLen/L : 1;
   t0 = max(0, t0);
   t1 = min(1, t1);
 
@@ -55,8 +53,8 @@ void gradientArrowLine(
 
   // Arrow heads on top
   if (arrowAtStart)
-    arrowHead(A, -u, c1, arrowLenStart, arrowWidthStart);
+    arrowHead(A, -u, c1, arrowLen, arrowWidth);
   if (arrowAtEnd)
-    arrowHead(B,  u, c2, arrowLenEnd,   arrowWidthEnd);
+    arrowHead(B,  u, c2, arrowLen,   arrowWidth);
 }
 
