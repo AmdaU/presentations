@@ -7,3 +7,7 @@ alpha = 2.0
 psi = (qt.coherent(N, alpha) + qt.coherent(N, -alpha)).unit()
 rho = qt.ket2dm(psi)
 save_rho(rho, 'cat_state')
+
+psi = (qt.coherent(N, alpha) - qt.coherent(N, -alpha)).unit()
+rho = qt.ket2dm(psi)
+save_rho(rho, 'cat_state_1')

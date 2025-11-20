@@ -85,7 +85,7 @@ $(TEX_FIGS): %.pdf: %.tex AutoColors.sty.tmp
 	cd figs && lualatex $(notdir $(basename $<))
 
 # for every .dat file in figs/states, run wigner.py
-$(STATES_FIGS): %_wigner.pdf: %.dat .venv
+$(STATES_FIGS): %_wigner.pdf: %.dat .venv figs/states/wigner.py
 	.venv/bin/python3 figs/states/wigner.py $(notdir $(basename $<))
 
 figs: $(STATES_FIGS) $(ASY_FIGS) $(TEX_FIGS)

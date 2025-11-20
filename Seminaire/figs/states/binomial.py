@@ -6,3 +6,7 @@ N = 60
 psi = (qt.fock(N, 0) + qt.fock(N, 4)).unit()
 rho = qt.ket2dm(psi)
 save_rho(rho, 'binomial')
+
+psi = (qt.fock(N, 2)).unit()
+rho = qt.ket2dm(psi)
+save_rho(rho, 'binomial_1')

@@ -1,0 +1,62 @@
+
+// Draw a triangular arrow head at 'tip', pointing in direction 'dir'
+void arrowHead(pair tip, pair dir, pen col,
+               real len, real width) {
+  if (len <= 0 || width <= 0) return;
+
+  pair u = dir/abs(dir);     // unit direction
+  pair n = rotate(90)*u;     // normal, 90 degrees CCW
+
+  pair base  = tip - len*u;          // center of base
+  pair left  = base + (width/2)*n;
+  pair right = base - (width/2)*n;
+
+  path P = left -- tip -- right -- cycle;
+  filldraw(P, col, col);
+}
+
+// Gradient line with optional arrows at start/end
+void gradientArrowLine(
+  pair A, pair B,
+  pen c1, pen c2,
+  int n = 100,
+  real w = 1bp,
+  bool arrowAtStart = false,
+  bool arrowAtEnd   = true,
+  real arrowLenStart   = 0.5,
+  real arrowLenEnd     = 0.5,
+  real arrowWidthStart = 0.25,
+  real arrowWidthEnd   = 0.25
+) {
+  pair d = B - A;
+  real L = abs(d);
+  if (L == 0) return;
+  pair u = d/L;
+
+  // Fractions of [0,1] reserved for arrows
+  real t0 = arrowAtStart ? arrowLenStart/L : 0;
+  real t1 = arrowAtEnd   ? 1 - arrowLenEnd/L : 1;
+  t0 = max(0, t0);
+  t1 = min(1, t1);
+
+  // Gradient part
+  if (t1 > t0) {
+    for (int i = 0; i < n; ++i) {
+      real s1 = t0 + (t1 - t0)*i/n;
+      real s2 = t0 + (t1 - t0)*(i + 1)/n;
+      pair P1 = A + s1*d;
+      pair P2 = A + s2*d;
+
+      real tm = (s1 + s2)/2;           // global parameter in [0,1]
+      pen col = (1 - tm)*c1 + tm*c2 + linewidth(w);
+      draw(P1 -- P2, col);
+    }
+  }
+
+  // Arrow heads on top
+  if (arrowAtStart)
+    arrowHead(A, -u, c1, arrowLenStart, arrowWidthStart);
+  if (arrowAtEnd)
+    arrowHead(B,  u, c2, arrowLenEnd,   arrowWidthEnd);
+}
+

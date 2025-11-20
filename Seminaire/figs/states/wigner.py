@@ -21,7 +21,7 @@ def hex_to_rgb(hex_color):
 
 red = hex_to_rgb(colors['mainred'])
 blue = hex_to_rgb(colors['mainblue'])
-background = hex_to_rgb(colors['background_dark'])
+background = hex_to_rgb(colors['background_light'])
 white = np.array([1, 1, 1])
 
 # load a .dat file representing a density matrix or state vector
