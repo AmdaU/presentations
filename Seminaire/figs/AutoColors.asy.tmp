@@ -1,12 +1,12 @@
 // Auto-generated Asymptote color configuration
 // Generated from colors.json
 
-// Primary color: #7287fd;
-pen primary = RGB(114, 135, 253);
-// Secondary color: #FD87AC;
-pen secondary = RGB(253, 135, 172);
-// Tertiary color: #488745;
-pen tertiary = RGB(72, 135, 69);
+// Primary color: #005358;
+pen primary = RGB(0, 83, 88);
+// Secondary color: #D75F57;
+pen secondary = RGB(215, 95, 87);
+// Tertiary color: #9DAF9A;
+pen tertiary = RGB(157, 175, 154);
 // Background_Dark color: #181825;
 pen background_dark = RGB(24, 24, 37);
 // Background_Light color: #DFDAD1;

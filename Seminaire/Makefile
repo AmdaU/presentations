@@ -34,7 +34,7 @@ OPT = -interaction=batchmode -shell-escape # -shell-escape is necessary for svgs
 
 # Asymptote outputs
 ASY_OUTS = $(ASY:.asy=)
-ASY_FIGS = $(ASY:.asy=.pdf)
+ASY_FIGS = $(ASY:.asy=.svg)
 	
 # tex figs
 TEX_FIGS = $(FIGS_TEX:.tex=.pdf)
@@ -78,8 +78,8 @@ figs/AutoColors.asy.tmp: colors.json
 asy: $(ASY_FIGS)
 
 # Generate figures
-$(ASY_FIGS): %.pdf: %.asy figs/AutoColors.asy.tmp
-	asy -f pdf $< -o $(basename $@)
+$(ASY_FIGS): %.svg: %.asy figs/AutoColors.asy.tmp
+	asy -f svg $< -o $(basename $@)
 	
 $(TEX_FIGS): %.pdf: %.tex AutoColors.sty.tmp
 	cd figs && lualatex $(notdir $(basename $<))
