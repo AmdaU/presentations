@@ -20,6 +20,7 @@ pen parabola_pen = linewidth(2);
 
 real range_x =2;
 real num_lines = 7;
+real fontsize = 30;
 
 
 // draw a parabola graph 
@@ -38,7 +39,9 @@ for (int i=1; i<=num_lines; ++i){
 // draw the parabola
 draw(graph(f,-range_x,range_x,operator ..), parabola_pen);
 
+//draw dots above the parabola
 
+label("$\vdots$", (0, f(range_x)* (1+1/num_lines/2)), fontsize(fontsize));
 
 
 
