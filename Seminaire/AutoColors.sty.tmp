@@ -1,0 +1,53 @@
+% Auto-generated LaTeX color configuration
+% Generated from colors.json
+
+\usepackage{xcolor}
+
+% Primary color: #005358
+\definecolor{Autoprimary}{HTML}{005358}
+\colorlet{lightAutoprimary}{Autoprimary!80}
+\colorlet{darkAutoprimary}{Autoprimary!80!black}
+\colorlet{paleAutoprimary}{Autoprimary!10}
+
+% Secondary color: #D75F57
+\definecolor{Autosecondary}{HTML}{D75F57}
+\colorlet{lightAutosecondary}{Autosecondary!80}
+\colorlet{darkAutosecondary}{Autosecondary!80!black}
+\colorlet{paleAutosecondary}{Autosecondary!10}
+
+% Tertiary color: #9DAF9A
+\definecolor{Autotertiary}{HTML}{9DAF9A}
+\colorlet{lightAutotertiary}{Autotertiary!80}
+\colorlet{darkAutotertiary}{Autotertiary!80!black}
+\colorlet{paleAutotertiary}{Autotertiary!10}
+
+% Background_Dark color: #181825
+\definecolor{Autobackground_dark}{HTML}{181825}
+\colorlet{lightAutobackground_dark}{Autobackground_dark!80}
+\colorlet{darkAutobackground_dark}{Autobackground_dark!80!black}
+\colorlet{paleAutobackground_dark}{Autobackground_dark!10}
+
+% Background_Light color: #DFDAD1
+\definecolor{Autobackground_light}{HTML}{DFDAD1}
+\colorlet{lightAutobackground_light}{Autobackground_light!80}
+\colorlet{darkAutobackground_light}{Autobackground_light!80!black}
+\colorlet{paleAutobackground_light}{Autobackground_light!10}
+
+% Mainred color: #D75F57
+\definecolor{Automainred}{HTML}{D75F57}
+\colorlet{lightAutomainred}{Automainred!80}
+\colorlet{darkAutomainred}{Automainred!80!black}
+\colorlet{paleAutomainred}{Automainred!10}
+
+% Mainblue color: #005358
+\definecolor{Automainblue}{HTML}{005358}
+\colorlet{lightAutomainblue}{Automainblue!80}
+\colorlet{darkAutomainblue}{Automainblue!80!black}
+\colorlet{paleAutomainblue}{Automainblue!10}
+
+% Error color: #d81d04
+\definecolor{Autoerror}{HTML}{d81d04}
+\colorlet{lightAutoerror}{Autoerror!80}
+\colorlet{darkAutoerror}{Autoerror!80!black}
+\colorlet{paleAutoerror}{Autoerror!10}
+
