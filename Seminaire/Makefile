@@ -33,8 +33,13 @@ GENERATOR = pdflatex
 OPT = -interaction=batchmode -shell-escape # -shell-escape is necessary for svgs
 
 # Asymptote outputs
-ASY_OUTS = $(ASY:.asy=)
-ASY_FIGS = $(ASY:.asy=.svg)
+ASY_GIF_SOURCES = $(shell grep -r -l --include="*.asy" 'settings.outformat = "gif"' ./figs || true)
+ASY_PNG_SOURCES = $(shell grep -r -l --include="*.asy" 'settings.outformat = "png"' ./figs || true)
+ASY_SVG_SOURCES = $(filter-out $(ASY_GIF_SOURCES) $(ASY_PNG_SOURCES),$(ASY))
+
+ASY_SVGS = $(ASY_SVG_SOURCES:.asy=.svg)
+ASY_GIFS = $(ASY_GIF_SOURCES:.asy=.gif)
+ASY_PNGS = $(ASY_PNG_SOURCES:.asy=.png)
 	
 # tex figs
 TEX_FIGS = $(FIGS_TEX:.tex=.pdf)
@@ -75,11 +80,18 @@ AutoColors.sty.tmp:
 figs/AutoColors.asy.tmp: colors.json
 	python3 scripts/convert_json.py --asy
 
-asy: $(ASY_FIGS)
+asy: $(ASY_SVGS) $(ASY_GIFS) $(ASY_PNGS)
 
 # Generate figures
-$(ASY_FIGS): %.svg: %.asy figs/AutoColors.asy.tmp
-	asy -f svg $< -o $(basename $@)
+$(ASY_SVGS): %.svg: %.asy figs/AutoColors.asy.tmp
+	asy $< -o $(basename $@)
+
+$(ASY_GIFS): %.gif: %.asy figs/AutoColors.asy.tmp
+	asy $<
+	mv $(notdir $@) $@
+
+$(ASY_PNGS): %.png: %.asy figs/AutoColors.asy.tmp
+	asy $< -o $(basename $@)
 	
 $(TEX_FIGS): %.pdf: %.tex AutoColors.sty.tmp
 	cd figs && lualatex $(notdir $(basename $<))
@@ -88,7 +100,7 @@ $(TEX_FIGS): %.pdf: %.tex AutoColors.sty.tmp
 $(STATES_FIGS): %_wigner.pdf: %.dat .venv figs/states/wigner.py
 	.venv/bin/python3 figs/states/wigner.py $(notdir $(basename $<))
 
-figs: $(STATES_FIGS) $(ASY_FIGS) $(TEX_FIGS)
+figs: $(STATES_FIGS) $(ASY_SVGS) $(ASY_GIFS) $(ASY_PNGS) $(TEX_FIGS)
 
 .venv: requirements.txt
 	python3 -m venv .venv

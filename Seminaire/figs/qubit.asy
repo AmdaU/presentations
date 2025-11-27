@@ -52,13 +52,12 @@ gradientArrowLine(
   pos0 + gap + offset, pos1 - gap + offset,
   accent, accent2,
   n = 200,
-  w = 1.2bp,
+  w = 10bp,
   arrowAtStart = true,
   arrowAtEnd   = true,
-  arrowLenEnd   = 0.7,   // absolute length in your coordinate units
-  arrowWidthEnd = 0.35
+  arrowLen   = 1,   // absolute length in your coordinate units
+  arrowWidth = 1
 );
-
 // draw((pos0 + gap + offset) --(pos1 - gap + offset), arrow_pen, Arrows(10));
 
 

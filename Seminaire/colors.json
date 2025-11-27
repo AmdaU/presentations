@@ -1,10 +1,11 @@
 {
-	"primary": "#005358",
-	"secondary": "#D75F57",
-	"tertiary": "#9DAF9A",
-	"background_dark": "#181825",
-	"background_light": "#DFDAD1",
-	"mainred": "#D75F57",
-	"mainblue": "#005358",
-	"error": "#d81d04"
+  "primary": "#005358",
+  "secondary": "#D75F57",
+  "tertiary": "#9DAF9A",
+  "grey": "#b3b3b3",
+  "background_dark": "#181825",
+  "background_light": "#DFDAD1",
+  "mainred": "#D75F57",
+  "mainblue": "#005358",
+  "error": "#d81d04"
 }

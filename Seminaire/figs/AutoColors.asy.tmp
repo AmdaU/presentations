@@ -7,6 +7,8 @@ pen primary = RGB(0, 83, 88);
 pen secondary = RGB(215, 95, 87);
 // Tertiary color: #9DAF9A;
 pen tertiary = RGB(157, 175, 154);
+// Grey color: #b3b3b3;
+pen grey = RGB(179, 179, 179);
 // Background_Dark color: #181825;
 pen background_dark = RGB(24, 24, 37);
 // Background_Light color: #DFDAD1;
