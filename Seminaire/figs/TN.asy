@@ -103,11 +103,11 @@ pair perpUnitCW(pair a, pair b, int side)
   return (side >= 0 ? cw : -cw);
 }
 
-void labelPerpVisible(string s, pair a, pair b, real radiusA=0, real radiusB=0, int side=+1)
+void labelPerpVisible(string s, pair a, pair b, real radiusA=0, real radiusB=0, int side=+1, int dim=2)
 {
   pair mp = visibleMidpoint(a, b, radiusA, radiusB);
   pair n  = perpUnitCW(a, b, side);
-  label(s, mp, gap*n);
+  label(s, mp, (gap+(log10(dim)/5))*n);
 }
 
 // Ship out with a uniform margin around the figure
@@ -239,7 +239,7 @@ void drawConnection(Tensor t1, Tensor t2, Leg L1, Leg L2, bool bezier=true)
   } else {
     draw(t1.pos--t2.pos, leg);
     if (L1.labelStrength > 0) {
-      labelPerpVisible(legLabel(L1), t1.pos, t2.pos, r, r, L1.side);
+      labelPerpVisible(legLabel(L1), t1.pos, t2.pos, r, r, L1.side, L1.dim);
     }
   }
 }
@@ -249,7 +249,7 @@ void drawLeg(Leg L, pair start, pair end, real radiusStart=0, real radiusEnd=0, 
   // make the width the log of the dim of the leg
   pen leg = get_width(L.dim) + L.color;
   draw(start--end, leg);
-  labelPerpVisible(legLabel(L), start, end, radiusStart, radiusEnd, L.side);
+  labelPerpVisible(legLabel(L), start, end, radiusStart, radiusEnd, L.side, L.dim);
 }
 
 void drawExternalLeg(Tensor t, Leg L)
