@@ -21,6 +21,6 @@ Tensor A = makeTensor("$A$", (0,0), new Leg[] {i, j}, secondary, "rect");
 
 
 TensorNetwork net = makeTensorNetwork(new Tensor[] {A});
-label("$A^j_{i} \rightarrow$", (-30,0), align=W, fontsize(fontsize));
+label("$A^j_{i} \rightarrow$", (-15,0), align=W, fontsize(fontsize));
 draw(net);
 shipoutWithMargin(2*lw + 2*gap);

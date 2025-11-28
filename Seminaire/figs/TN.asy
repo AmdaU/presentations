@@ -41,12 +41,15 @@ struct Tensor {
   real r;
   int dim; // dimension of the index (used only to draw the indentity tensor for now)
   real ratio; // ratio of the width to the height if the shape is a rectangle
+  path blob; // if the shape is a blob, the path of the blob
+  pair[] blob_ports; // if the shape is a blob, the ports of the blob
+  pair blob_label_pos; // if the shape is a blob, the position of the label of the blob
   Leg[] legs;
   Leg[][] groups;
 }
-Tensor makeTensor(string label, pair pos, Leg[] legs, pen color=black, string shape="circle", real r=r, int dim=2, real ratio=1)
+Tensor makeTensor(string label, pair pos, Leg[] legs, pen color=black, string shape="circle", real r=r, int dim=2, real ratio=1, path blob=nullpath, pair[] blob_ports=new pair[] {}, pair blob_label_pos=(0,0))
 {
-  Tensor t; t.label=label; t.pos=pos; t.legs=legs; t.color=color; t.shape=shape; t.r=r; t.dim=dim; t.ratio=ratio; return t;
+  Tensor t; t.label=label; t.pos=pos; t.legs=legs; t.color=color; t.shape=shape; t.r=r; t.dim=dim; t.ratio=ratio; t.blob=blob; t.blob_ports=blob_ports; t.blob_label_pos=blob_label_pos; return t;
 }
 
 // --------- Convenience functions ---------
@@ -65,13 +68,18 @@ pair getGroupIndex(Tensor t, Leg L)
 }
 real getGroupOffset(Tensor t, Leg L)
 {
-
+  if (t.shape == "blob") {
+    return 0;
+  }
   pair groupData = getGroupIndex(t, L);
   real groupIdx = groupData.x;
   real groupLen = groupData.y;
   real n = groupLen;
+  if (n == 1) {
+    return 0;
+  }
   real dist = 1/(groupLen + 1);
-  real offset = t.r/t.ratio*(-1/2 +(1/n*(1/2 + groupIdx)));
+  real offset = 2*t.r*(-1/2 +(1/n*(1/2 + groupIdx)));
   return offset;
 }
 
@@ -109,6 +117,16 @@ void labelPerpVisible(string s, pair a, pair b, real radiusA=0, real radiusB=0, 
   pair mp = visibleMidpoint(a, b, radiusA, radiusB);
   pair n  = perpUnitCW(a, b, side);
   label(s, mp, (gap+(log10(dim)/5))*n);
+}
+
+int get_leg_numerical_index(Tensor t, Leg L)
+{
+  for (int i = 0; i < t.legs.length; ++i) {
+    if (t.legs[i] == L) {
+      return i;
+    }
+  }
+  return -1;
 }
 
 // Ship out with a uniform margin around the figure
@@ -171,7 +189,11 @@ pair portPoint(Tensor t, Leg L)
   } else if (t.shape == "rect") {
     pair thedir = dir(degrees(L.dir));
     return t.pos + (thedir.x*t.r, thedir.y*t.r*t.ratio);
-  } else {
+  } else if (t.shape == "blob") {
+    return t.pos + t.blob_ports[get_leg_numerical_index(t, L)];
+  }
+  else {
+
     return (0,0);
   }
 }
@@ -216,8 +238,13 @@ void drawTensorBody(Tensor t)
     filldraw(shift(t.pos)*rotate(45)*box((-t.r/sqrt(2), -t.r/sqrt(2)), (t.r/sqrt(2), t.r/sqrt(2))), t.color, edge);
   } else if (t.shape == "rect") {
     filldraw(shift(t.pos)*box((-t.r, -t.r*t.ratio), (t.r, t.r*t.ratio)), t.color, edge);
+  } else if (t.shape == "blob") {
+    filldraw(shift(t.pos)*t.blob, t.color, edge);
   }
-  if (t.label != "") label(t.label, t.pos);
+  if (t.shape == "blob") {
+    label(t.label, t.pos + t.blob_label_pos);
+  }
+  else if (t.label != "") label(t.label, t.pos);
 }
 
 
@@ -250,16 +277,25 @@ void drawLeg(Leg L, pair start, pair end, real radiusStart=0, real radiusEnd=0, 
   // make the width the log of the dim of the leg
   pen leg = get_width(L.dim) + L.color;
   draw(start--end, leg);
+  if (L.labelStrength == 0) {
+    return;
+  }
   labelPerpVisible(legLabel(L), start, end, radiusStart, radiusEnd, L.side, L.dim);
 }
 
 void drawExternalLeg(Tensor t, Leg L)
 {
-  
+
   real offset = getGroupOffset(t, L);
-  //real offset = 0;
-  pair a = t.pos + (offset, 0);
-  pair b = portPoint(t, L) + dir(degrees(L.dir))*L.length + (offset, 0);
+  // real offset = 0;
+  pair a, b;
+  if (t.shape == "blob") {
+    a = t.pos + portPoint(t, L) + (offset, 0);
+    b = a + dir(degrees(L.dir))*L.length;
+  } else {
+    a = t.pos + (offset, 0);
+    b = portPoint(t, L) + dir(degrees(L.dir))*L.length + (offset, 0);
+  }
   drawLeg(L, a, b, t.r, 0);
 }
 // Draw an internal edge between two tensor legs; place index label mid-edge

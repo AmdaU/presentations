@@ -20,6 +20,6 @@ Tensor T = makeTensor("$\psi$", (0,0), new Leg[] {i}, primary, "circle");
 
 
 TensorNetwork net = makeTensorNetwork(new Tensor[] {T});
-label("$\psi_i \rightarrow$", (-30,0), align=W, fontsize(fontsize));
+label("$\psi_i \rightarrow$", (-15,0), align=W, fontsize(fontsize));
 draw(net);
 shipoutWithMargin(2*lw + 2*gap);
