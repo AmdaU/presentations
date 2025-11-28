@@ -1,3 +1,5 @@
+import settings;
+outformat = "svg";
 include "figs/TN.asy";
 include "figs/AutoColors.asy.tmp";
 

@@ -43,6 +43,7 @@ ASY_PNGS = $(ASY_PNG_SOURCES:.asy=.png)
 	
 # tex figs
 TEX_FIGS = $(FIGS_TEX:.tex=.pdf)
+TEX_SVGS = $(FIGS_TEX:.tex=.svg)
 
 HIDE = @
 MAKE = make
@@ -96,11 +97,14 @@ $(ASY_PNGS): %.png: %.asy figs/AutoColors.asy.tmp
 $(TEX_FIGS): %.pdf: %.tex AutoColors.sty.tmp
 	cd figs && lualatex $(notdir $(basename $<))
 
+$(TEX_SVGS): %.svg: %.pdf
+	pdftocairo -svg $< $@
+
 # for every .dat file in figs/states, run wigner.py
 $(STATES_FIGS): %_wigner.pdf: %.dat .venv figs/states/wigner.py
 	.venv/bin/python3 figs/states/wigner.py $(notdir $(basename $<))
 
-figs: $(STATES_FIGS) $(ASY_SVGS) $(ASY_GIFS) $(ASY_PNGS) $(TEX_FIGS)
+figs: $(STATES_FIGS) $(ASY_SVGS) $(ASY_GIFS) $(ASY_PNGS) $(TEX_FIGS) $(TEX_SVGS)
 
 .venv: requirements.txt
 	python3 -m venv .venv

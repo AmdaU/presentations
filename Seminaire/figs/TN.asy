@@ -69,8 +69,9 @@ real getGroupOffset(Tensor t, Leg L)
   pair groupData = getGroupIndex(t, L);
   real groupIdx = groupData.x;
   real groupLen = groupData.y;
+  real n = groupLen;
   real dist = 1/(groupLen + 1);
-  real offset = t.r*(-1/2 + dist*(groupIdx+1))*2;
+  real offset = t.r/t.ratio*(-1/2 +(1/n*(1/2 + groupIdx)));
   return offset;
 }
 

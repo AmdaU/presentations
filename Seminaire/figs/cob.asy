@@ -1,5 +1,5 @@
 import settings;
-// outformat = "pdf";
+outformat = "svg";
 htmlviewer="/usr/bin/chromium-browser";
 //import graph3 -----------------------------------------------------------------------------
 import graph;
