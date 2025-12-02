@@ -14,9 +14,5 @@ import graph;
 import geometry;
 import math;                        
 
-texpreamble("\input{AutoColors.sty.tmp}");
-texpreamble("\renewcommand{\r}{\color{Autosecondary}}");
-texpreamble("\renewcommand{\b}{\color{Autoprimary}}");
-
-label("$\dot{\ket{\b \psi}} = -\frac{i}{\hbar} {\r H} \ket{\b \psi}$", (0,0), fontsize(18pt));
+label("$|2\rangle$", (0,0), fontsize(20pt));
 // shipout(bbox(2mm, background, Fill));

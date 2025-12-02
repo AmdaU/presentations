@@ -91,13 +91,25 @@
 <use x='249.872533' y='145.143107' xlink:href='#g1-86'/>
 <use x='259.298212' y='140.80467' xlink:href='#g0-121'/>
 <g transform='translate(-20.3406 97.0624)scale(.996264)'>
+<path d='M238.946 55.913V30.8193' fill='none' stroke='#d75f57' stroke-dasharray='25.0937,25.0937' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='3.01125'/>
+</g>
+<g transform='translate(-20.3406 97.0624)scale(.996264)'>
+<path d='M220.376 49.3886H245.47' fill='none' stroke='#d75f57' stroke-dasharray='25.0937,25.0937' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='3.01125'/>
+</g>
+<g transform='translate(-20.3406 97.0624)scale(.996264)'>
+<path d='M284.114 55.913V30.8193' fill='none' stroke='#d75f57' stroke-dasharray='25.0937,25.0937' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='3.01125'/>
+</g>
+<g transform='translate(-20.3406 97.0624)scale(.996264)'>
+<path d='M175.208 49.3886H200.301' fill='none' stroke='#d75f57' stroke-dasharray='25.0937,25.0937' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='3.01125'/>
+</g>
+<g transform='translate(-20.3406 97.0624)scale(.996264)'>
 <path d='M324.986 43.3661H297.718' fill='none' stroke='#000000' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='1.50562'/>
 </g>
 <g transform='translate(-20.3406 97.0624)scale(.996264)'>
 <path d='M324.986 42.6887C322.445 40.8257 321.327 38.0143 321.327 37.7433C321.327 37.4385 321.598 37.3369 321.835 37.3369C322.208 37.3369 322.276 37.5062 322.377 37.6756C322.885 38.8272 323.969 41.2999 327.357 42.8919C327.763 43.0952 327.831 43.129 327.831 43.3661S327.763 43.6371 327.357 43.8403C323.969 45.4323 322.885 47.905 322.377 49.0567C322.276 49.226 322.208 49.3954 321.835 49.3954C321.598 49.3954 321.327 49.2938 321.327 48.9889C321.327 48.718 322.445 45.9066 324.986 44.0436V42.6887Z' fill='#000000'/>
 </g>
 <g transform='translate(-20.3406 97.0624)scale(.996264)'>
-<path d='M357.943 43.3661H403.112' fill='none' stroke='#000000' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='2.41727'/>
+<path d='M357.943 43.3661H403.112' fill='none' stroke='#000000' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.604318'/>
 </g>
 <g transform='translate(-20.3406 97.0624)scale(.996264)'>
 <path d='M357.943 43.3661V11.2461' fill='none' stroke='#000000' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='2.41727'/>

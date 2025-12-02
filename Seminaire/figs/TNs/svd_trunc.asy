@@ -7,12 +7,15 @@ picture old = currentpicture;
 externalLegLength = 20;
 
 
-Leg i = makeLeg("i");
-Leg i1 = makeLeg("i_1", (0, 1), side=-1);
-Leg i2 = makeLeg("i_2", (0, 1));
-Leg virt1 = makeLeg("virt1", (1,0), allowBezier=false, labelStrength=0);
-Leg virt2 = makeLeg("virt2", (1,0), allowBezier=false, labelStrength=0);
-Leg virt3 = makeLeg("virt3", (1,0), allowBezier=false, labelStrength=0);
+legscale = 2;
+int dim = 16;
+
+Leg i = makeLeg("i", dim=dim);
+Leg i1 = makeLeg("i_1", (0, 1), side=-1, dim=dim);
+Leg i2 = makeLeg("i_2", (0, 1), dim=dim);
+Leg virt1 = makeLeg("virt1", (1,0), allowBezier=false, labelStrength=0, dim=dim);
+Leg virt2 = makeLeg("virt2", (1,0), allowBezier=false, labelStrength=0, dim=dim);
+Leg virt3 = makeLeg("virt3", (1,0), allowBezier=false, labelStrength=0, dim=2);
 
 Tensor vector = makeTensor("$v$", (0,0), new Leg[] {i}, primary, "triangle");
 Tensor vector_split = makeTensor("$v$", (0,0), new Leg[] {i1, i2}, primary, "circle");
@@ -39,9 +42,28 @@ currentpicture = vector_split_pic;
 draw(vector_split_net);
 shipoutWithMargin(2*lw + 2*gap);
 
+
+
 picture svd_pic;
 currentpicture = svd_pic;
+
+real slash_length = 25;
+real slash_width = 3;
+real slash_offset = 6;
+pair pos = S.pos;
+
 draw(svd_net);
+// slash through S
+draw(pos+(slash_offset,-slash_length/2)--(pos+(slash_offset,slash_length/2)), dashed+secondary+linewidth(slash_width));
+draw(pos+(-slash_length/2,-slash_offset)--(pos+(slash_length/2,-slash_offset)), dashed+secondary+linewidth(slash_width));
+
+// slash through Vdag
+pos = Vdag.pos;
+draw(pos+(slash_offset,-slash_length/2)--(pos+(slash_offset,slash_length/2)), dashed+secondary+linewidth(slash_width));
+// slash through U
+pos = U.pos;
+draw(pos+(-slash_length/2,-slash_offset)--(pos+(slash_length/2,-slash_offset)), dashed+secondary+linewidth(slash_width));
+
 shipoutWithMargin(2*lw + 2*gap);
 
 picture MPS_pic;
@@ -54,6 +76,7 @@ currentpicture = old;
 
 pair total_offset = (100,0);
 picture[] pics = new picture[] {vector_pic, vector_split_pic, svd_pic, MPS_pic};
+//picture[] pics = new picture[] {svd_pic, MPS_pic};
 for (int i = 0; i < pics.length; i+=1) {
   attach(pics[i].fit(), total_offset);
   if (i < pics.length - 1) {

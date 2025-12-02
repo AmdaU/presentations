@@ -4,7 +4,7 @@ import graph;
 
 real lw = 2.5;        // line width for legs and outlines
 real r  = 12;          // node radius (pt)
-real gap  = 1;        // label distance from node along leg
+real gap  = 0;        // label distance from node along leg
 real legscale = 8.0;
 real externalLegLength = 25;
 
@@ -116,7 +116,7 @@ void labelPerpVisible(string s, pair a, pair b, real radiusA=0, real radiusB=0, 
 {
   pair mp = visibleMidpoint(a, b, radiusA, radiusB);
   pair n  = perpUnitCW(a, b, side);
-  label(s, mp, (gap+(log10(dim)/5))*n);
+  label(s, mp, (gap+log10(dim)*legscale*1bp/2)*n);
 }
 
 int get_leg_numerical_index(Tensor t, Leg L)
