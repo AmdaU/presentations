@@ -2,6 +2,7 @@ import graph;
 import settings;
 
 include "figs/AutoColors.asy.tmp";
+include "figs/graphs/graphs_common.asy";
 
 outformat="svg";
 
@@ -11,32 +12,26 @@ pen curve_width=linewidth(2pt);
 pen axis_pen=linewidth(1pt);
 
 
-real[] curve_gkp;
 real[] curve_qubit;
 real[] curve_repetition;
 real[] curve_repetition_x_gkp;
+real[] curve_repetition_x_gkp_corr;
 
-string data="figs/graphs/logical_value_curves_low.csv";
+string data_file="figs/graphs/logical_value_curves_low.csv";
 
-file in=input(data).line().csv();
+real[][] data=get_data(data_file);
 
-string[] titlelabel=in;
-string[] columnlabel=in;
-
-real[][] data = in;
-
-data=transpose(data);
-
-real[] curve_gkp=data[0], curve_qubit=data[1], curve_repetition=data[2], curve_repetition_x_gkp=data[3];
+real[] curve_gkp=data[0], curve_repetition=data[1], curve_repetition_x_gkp=data[2], curve_repetition_x_gkp_corr=data[3];
 // make x range from 0 to the length of the data
 int[] x;
 for (int i = 1; i <= curve_gkp.length; ++i) x.push(i);
 
 
 // draw(graph(x, curve_gkp), primary+curve_width);
-draw(graph(x, curve_qubit), primary+curve_width, "Qubit");
-draw(graph(x, curve_repetition), secondary+curve_width, "Repetition");
-draw(graph(x, curve_repetition_x_gkp), tertiary+curve_width, "Repetition $\otimes$ GKP");
+// draw(graph(x, curve_qubit), primary+curve_width, "Qubit");
+// draw(graph(x, curve_repetition), secondary+curve_width, "Repetition");
+// draw(graph(x, curve_repetition_x_gkp), tertiary+curve_width, "Repetition $\otimes$ GKP");
+// draw(graph(x, curve_repetition_x_gkp_corr), quaternary+curve_width, "Repetition $\otimes$ GKP - Correction");
 
 //xrange from 1 to the length of the data
 
