@@ -43,7 +43,7 @@ void draw_graphs(real[][] data, pen[] colors, string[] labels){
 		draw(graph(x, data[i]), colors[i]+curve_width, labels[i]);
 	}
 
-	xaxis(Label("$t$", fontsize(fontsize)), YEquals(y_min), xmin=0, xmax=x.length, p=axis_pen, Arrow(10));
+	xaxis(Label("$t$", fontsize(fontsize), position=0.5, align=S), YEquals(y_min), xmin=0, xmax=x.length, p=axis_pen, Arrow(10));
 	yaxis(Label("$\langle \psi | \bar 0 \rangle$", fontsize(fontsize)), Left, RightTicks, ymin=y_min, ymax=1, above=true,p=axis_pen, Arrow(10));
 
 
