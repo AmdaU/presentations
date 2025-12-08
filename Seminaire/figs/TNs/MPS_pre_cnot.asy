@@ -41,6 +41,6 @@ Tensor Cnot = makeTensor("CNOT", (dist/2,dist), new Leg[] {i0p, i1p, dag(is[0]),
 
 
 
-TensorNetwork net = makeTensorNetwork(concat(Ts, new Tensor[] {Cnot}));
+TensorNetwork net = makeTensorNetwork(Ts);
 draw(net);
 shipoutWithMargin(2*lw + 2*gap);
