@@ -12,7 +12,7 @@ real dist = 40;
 Leg[] is = new Leg[N];
 Leg[] virts = new Leg[N];
 for (int n = 0; n < N; n+=1) {
-  is[n] = makeLeg("i_" + string(n), (0, 1));
+  is[n] = makeLeg("i_" + string(n+1), (0, 1));
 }
 for (int n = 0; n < N-1; n+=1) {
   virts[n] = makeLeg("virt_" + string(n), (1,0), allowBezier=false, labelStrength=0);
