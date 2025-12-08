@@ -130,7 +130,7 @@ label(label_string, (i*l, -0.5), fontsize(fontsize));
 
 xaxis(xmin=-(n+1)*2*l, xmax=(n+1)*2*l, p=axis_pen,  Arrows(5));
 labelx("$\hat x$",S, fontsize(fontsize*2));
-yaxis(Label("$\psi(x)$", fontsize(fontsize*1.2), align=E), XEquals(-grid_l*l/2), axis_pen, EndArrow(5), ymin=0, ymax=line_height*1.2, autorotate=false);
+yaxis(Label("$|\psi(x)|^2$", fontsize(fontsize*1.2), align=E), XEquals(-grid_l*l/2), axis_pen, EndArrow(5), ymin=0, ymax=line_height*1.2, autorotate=false);
 
 
 
@@ -179,7 +179,7 @@ label(label_string, (-line_height, i*l), fontsize(fontsize), align=E);
 
 yaxis(ymin=-((n+1/2)+0.75)*l, ymax=((n+1/2)+0.75)*l, p=axis_pen,  Arrows(5));
 labely("$\hat p$",2*W, fontsize(fontsize*2));
-xaxis(Label("$\psi(p)$", fontsize(fontsize*1.2), align=N), YEquals((grid_l+1/2)*l/2), axis_pen, EndArrow(5), xmin=0, xmax=line_height*1.2);
+xaxis(Label("$|\psi(p)|^2$", fontsize(fontsize*1.2), align=N), YEquals((grid_l+1/2)*l/2), axis_pen, EndArrow(5), xmin=0, xmax=line_height*1.2);
 
 
 
