@@ -19,7 +19,7 @@ Leg k = makeLeg("k", labelStrength=0);
 Leg l = makeLeg("l", labelStrength=0);
 
 
-Tensor A = makeTensor("$\approx$CNOT", (0,0), new Leg[] {i, j, k, l}, secondary, "rect", ratio=0.3, r=30);
+Tensor A = makeTensor("$\approx$S", (0,0), new Leg[] {i, j, k, l}, secondary, "rect", ratio=0.3, r=30);
 
 
 TensorNetwork net = makeTensorNetwork(new Tensor[] {A});
